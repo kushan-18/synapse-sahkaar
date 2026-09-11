@@ -2087,9 +2087,9 @@ function CustomerApp({ st, set, t, lang, toastFn, notify }) {
     </div>
   );
 
-  const body = tab === 'women' ? <Women /> : tab === 'active' ? <Track /> : tab === 'history' ? <History /> : tab === 'inst' ? <Inst />
-    : view.s === 'list' ? <List cat={view.cat} /> : view.s === 'profile' ? <Profile w={view.w} />
-    : view.s === 'book' && draft ? <Book /> : <Home />;
+  const body = tab === 'women' ? Women() : tab === 'active' ? Track() : tab === 'history' ? History() : tab === 'inst' ? Inst()
+    : view.s === 'list' ? List({ cat: view.cat }) : view.s === 'profile' ? Profile({ w: view.w })
+    : view.s === 'book' && draft ? Book() : Home();
 
   /* ------------------------------------------------------------ two modals */
   const reviewBooking = st.bookings.find(x => x.id === reviewFor);
@@ -2515,7 +2515,7 @@ function WorkerApp({ st, set, t, lang, toastFn, notify }) {
 
   return (
     <div className="relative">
-      {tab === 'home' ? <Home /> : tab === 'active' ? <Active /> : tab === 'earnings' ? <Earnings /> : tab === 'welfare' ? <Welfare /> : <IdCard />}
+      {tab === 'home' ? Home() : tab === 'active' ? Active() : tab === 'earnings' ? Earnings() : tab === 'welfare' ? Welfare() : IdCard()}
 
       <button onClick={() => setSos(true)} className="fixed right-4 bottom-24 w-14 h-14 rounded-full grid place-items-center z-30 tap"
         style={{ background: `linear-gradient(160deg, #C24634, ${T.brick})`, boxShadow: '0 8px 22px rgba(178,58,43,.42)' }} aria-label={t('emergency')}><Siren size={24} color="#fff" /></button>
